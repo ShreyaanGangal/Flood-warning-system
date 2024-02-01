@@ -7,3 +7,11 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
+
+
+from floodsystem.stationdata import build_station_list
+
+def rivers_greatest_no_monitoring_stations():
+    stations = build_station_list()
+    
+
