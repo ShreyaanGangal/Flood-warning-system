@@ -43,7 +43,7 @@ def rivers_by_station_number(stations, N):
     
     print(list_largest_rivers)
 
-rivers_by_station_number(stations, 15)
+rivers_by_station_number(stations, 9)
 
 
 
