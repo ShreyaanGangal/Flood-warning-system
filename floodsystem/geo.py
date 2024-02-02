@@ -22,11 +22,11 @@ def rivers_by_station_number(stations, N):
         else:
            rivers.append(station.river)
            number_of_stations[rivers.index(station.river)] = number_of_stations[rivers.index(station.river)] + 1
-    tuple_rivers_number = ()
+    tuple_rivers_and_number = ()
     for i in len(number_of_stations):
-        tuple_rivers_number.append(rivers(i), number_of_stations[i])
+        tuple_rivers_and_number.append(rivers(i), number_of_stations[i])
     
-    return tuple_rivers_number
+    return tuple_rivers_and_number
 
 
 
