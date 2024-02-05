@@ -38,6 +38,7 @@ def rivers_with_station(stations):
             pass
         else: 
             container_of_rivers.append(station.river)
+    container_of_rivers.sort()
     return container_of_rivers
 
 def stations_by_river(stations):
@@ -46,10 +47,10 @@ def stations_by_river(stations):
     for station in stations:
         if station.river in rivers_in_dict:
             dict_rivers[station.river] += [station.name]
+            dict_rivers[station.river].sort()
         else:
             rivers_in_dict.append(station.river)
-            dict_rivers[station.river] = station.name
-    dict_rivers.sort()
+            dict_rivers[station.river] = [station.name]
     return dict_rivers
 
 
