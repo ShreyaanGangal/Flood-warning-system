@@ -6,9 +6,12 @@ def run():
     
     stations_list = []
     cambridge_city_centre_coords = (52.2053, 0.1218)
-    stations_distance_list = stations_by_distance(build_station_list,cambridge_city_centre_coords)
+    stations_distance_list = stations_by_distance(build_station_list(),cambridge_city_centre_coords)
     for (station,distance) in stations_distance_list:
-        stations_list.append(station.name,station.town,distance)
+        stations_list.append((station.name,station.town,distance))
 
-    print ("10 closest stations: " + stations_list[0:10] )
-    print ("10 furthest stations: " + stations_list[-10:] )
+    print (stations_list[:10])
+    print (stations_list[-10:])
+
+if __name__ == '__main__':
+    run()

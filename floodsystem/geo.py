@@ -32,6 +32,21 @@ def stations_within_radius(stations, centre, r):
             stations_within_r.append(station)
     return stations_within_r
 
+def rivers_with_station(stations):
+    '''returns a container with the name of the rivers with a monitoring station'''
+    container_of_rivers = []
+    for station in stations:
+        if station.river in container_of_rivers:
+            pass
+        else: 
+            container_of_rivers.append(station.river)
+    return container_of_rivers
+
+def stations_by_river(stations):
+    rivers = []
+    
+
+
 ''''def rivers_by_station_number(stations, N):
     stations = build_station_list()
     rivers = ()
