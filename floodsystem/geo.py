@@ -5,9 +5,10 @@
 geographical data.
 
 """
-
-from .utils import sorted_by_key  # noqa
 from haversine import haversine
+from floodsystem.stationdata import build_station_list
+from .utils import sorted_by_key  # noqa
+
 
 def stations_by_distance(stations, p):
     """returns a list of the stations and its distance from the coordinate p"""
@@ -18,7 +19,18 @@ def stations_by_distance(stations, p):
     sorted_by_distance = sorted_by_key(distances,1)
     return sorted_by_distance
 
-from floodsystem.stationdata import build_station_list
+def stations_within_radius(stations, centre, r):
+    """returns a list of all stations within radius r of a geographic coordinate x"""
+    distances = []
+    stations_within_r = []
+    for station in stations: 
+        distance_station_centre= haversine(station.coord,centre)
+        distances.append((station, distance_station_centre))
+    sorted_by_distance = sorted_by_key(distances,1)
+    for (station, distance_station_centre) in sorted_by_distance:
+        if distance_station_centre < r:
+            stations_within_r.append(station)
+    return stations_within_r
 
 ''''def rivers_by_station_number(stations, N):
     stations = build_station_list()
