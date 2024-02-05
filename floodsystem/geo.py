@@ -21,16 +21,14 @@ def stations_by_distance(stations, p):
 
 def stations_within_radius(stations, centre, r):
     """returns a list of all stations within radius r of a geographic coordinate x"""
-    distances = []
     stations_within_r = []
     for station in stations: 
         distance_station_centre= haversine(station.coord,centre)
-        distances.append((station, distance_station_centre))
-    sorted_by_distance = sorted_by_key(distances,1)
-    for (station, distance_station_centre) in sorted_by_distance:
-        if distance_station_centre < r:
-            stations_within_r.append(station)
+        if distance_station_centre <= r:
+            stations_within_r.append(station.name)
+    stations_within_r.sort()
     return stations_within_r
+    
 
 def rivers_with_station(stations):
     '''returns a container with the name of the rivers with a monitoring station'''
@@ -44,7 +42,7 @@ def rivers_with_station(stations):
 
 def stations_by_river(stations):
     rivers = []
-    
+
 
 
 ''''def rivers_by_station_number(stations, N):
