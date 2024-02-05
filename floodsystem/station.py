@@ -39,3 +39,26 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def typical_range_consistent(self):
+        if self.typical_range is None:
+            return False
+        elif self.typical_range[1] - self.typical_range[0] < 0: #maybe raise an exception in testing if the values are not even floats, but this is handled by float in stationdata.py
+            return False
+        else:
+            return True
+
+
+def inconsistent_typical_range_stations(self):
+    #from floodsystem.stationdata import build_station_list
+    #stations = build_station_list()
+    inconsistent_stations = []
+    for station in self:
+        if MonitoringStation.typical_range_consistent(station) == True:
+            pass
+        else:
+            inconsistent_stations.append(station)
+    return inconsistent_stations
+
+
+
