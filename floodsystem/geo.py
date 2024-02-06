@@ -5,11 +5,54 @@
 geographical data.
 
 """
-
-#from .utils import sorted_by_key  # noqa
-
-
+from haversine import haversine
 from floodsystem.stationdata import build_station_list
+from .utils import sorted_by_key  # noqa
+
+
+def stations_by_distance(stations, p):
+    """returns a list of the stations and its distance from the coordinate p"""
+    distances = []
+    for station in stations: 
+        distance = haversine(station.coord,p)
+        distances.append((station, distance))
+    sorted_by_distance = sorted_by_key(distances,1)
+    return sorted_by_distance
+
+def stations_within_radius(stations, centre, r):
+    """returns a list of all stations within radius r of a geographic coordinate x"""
+    stations_within_r = []
+    for station in stations: 
+        distance_station_centre= haversine(station.coord,centre)
+        if distance_station_centre <= r:
+            stations_within_r.append(station.name)
+    stations_within_r.sort()
+    return stations_within_r
+    
+
+def rivers_with_station(stations):
+    '''returns a container with the name of the rivers with a monitoring station'''
+    container_of_rivers = []
+    for station in stations:
+        if station.river in container_of_rivers:
+            pass
+        else: 
+            container_of_rivers.append(station.river)
+    container_of_rivers.sort()
+    return container_of_rivers
+
+def stations_by_river(stations):
+    rivers_in_dict = []
+    dict_rivers = {}
+    for station in stations:
+        if station.river in rivers_in_dict:
+            dict_rivers[station.river] += [station.name]
+            dict_rivers[station.river].sort()
+        else:
+            rivers_in_dict.append(station.river)
+            dict_rivers[station.river] = [station.name]
+    return dict_rivers
+
 
 ''''def rivers_by_station_number(stations, N):
     stations = build_station_list()
