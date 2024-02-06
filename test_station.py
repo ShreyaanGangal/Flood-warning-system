@@ -4,7 +4,7 @@
 """Unit test for the station module"""
 
 from floodsystem.station import MonitoringStation
-
+from floodsystem.station import inconsistent_typical_range_stations
 
 def test_create_monitoring_station():
 
@@ -26,3 +26,28 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
+Test_station_1 =MonitoringStation("testid1","testmeasure1","1",(0, 360),(-5, 6),"testriver1","testtown1")
+Test_station_2 =MonitoringStation("testid2","testmeasure2","2",(180, 180),(7, 3),"testriver2","testtown2")
+Test_station_3 =MonitoringStation("testid3","testmeasure3","3",(-180, 0), None,"testriver3","testtown3")       
+Test_station_list = [Test_station_1, Test_station_2, Test_station_3]
+
+
+def test_typical_range_consistent():
+    assert Test_station_1.typical_range_consistent() #assert that test station 1 returns true
+    assert not Test_station_2.typical_range_consistent() #assert that test station 2 returns false
+    assert not Test_station_3.typical_range_consistent() #assert that test station 3 returns false
+
+def test_inconsistent_typical_range_stations():
+    a = inconsistent_typical_range_stations(Test_station_list) 
+    assert Test_station_2 in a
+    assert Test_station_3 in a
+    assert len(a) ==  2
+
+
+
+
+
+
+
+
+        
