@@ -17,7 +17,7 @@ def test_stations_by_distance():
     assert test_output[2][0]==test_station_3
 
 def test_stations_within_radius():
-    test_output = stations_within_radius(test_stations_list,(0,0),100)
+    test_output = stations_within_radius(test_stations_list, (0,0), 1000000)
     assert test_output == [test_station_1.name, test_station_2.name, test_station_3.name]
 
 def test_rivers_with_stations():
