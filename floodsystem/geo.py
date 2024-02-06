@@ -71,9 +71,9 @@ def stations_by_river(stations):
     
     return tuple_rivers_and_number'''
 
-def rivers_by_station_number(self, N):
+def rivers_by_station_number(stations, N):
     rivers_station_number_dict = {}
-    for station in self:
+    for station in stations:
         if station.river in rivers_station_number_dict:
             rivers_station_number_dict[station.river] += 1
         else:
