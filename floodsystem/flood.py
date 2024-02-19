@@ -1,7 +1,6 @@
 from floodsystem.stationdata import update_water_levels 
 from .utils import sorted_by_key
-import itertools
-from floodsystem.station import MonitoringStation
+
 
 def stations_level_over_threshold(stations, tol):
     """Returns a list of tuples that hold a station at which the latest relative water level is over 'tol' and the relative water level at the station."""
