@@ -5,7 +5,7 @@ from floodsystem.geo import rivers_by_station_number
 
 def run():
     stations = build_station_list()
-    print(rivers_by_station_number(stations, 9))
+    print(rivers_by_station_number(stations, 7))
 
 if __name__ == '__main__':
     run()
