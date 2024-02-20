@@ -49,16 +49,24 @@ class MonitoringStation:
             return True
 
 
-def inconsistent_typical_range_stations(self):
-    #from floodsystem.stationdata import build_station_list
-    #stations = build_station_list()
-    inconsistent_stations = []
-    for station in self:
-        if MonitoringStation.typical_range_consistent(station) == True:
-            pass
-        else:
-            inconsistent_stations.append(station)
-    return inconsistent_stations
+    def inconsistent_typical_range_stations(self):
+        #from floodsystem.stationdata import build_station_list
+        #stations = build_station_list()
+        inconsistent_stations = []
+        for station in self:
+            if MonitoringStation.typical_range_consistent(station) == True:
+                pass
+            else:
+                inconsistent_stations.append(station)
+        return inconsistent_stations
 
+
+    def relative_water_level(self):
+        """Returns the latest water level as a fraction of the typical range."""
+        if self.typical_range_consistent() == False or self.latest_level == None:
+            return None
+        else:
+            fraction = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+            return fraction
 
 
