@@ -43,6 +43,14 @@ def test_inconsistent_typical_range_stations():
     assert Test_station_3 in a
     assert len(a) ==  2
 
+def test_relative_water_level():
+    Test_station_1.latest_level = 105
+    assert Test_station_1.relative_water_level() == 10
+
+    Test_station_1.latest_level = 0.5
+    assert Test_station_1.relative_water_level() == 0.5
+
+
 
 
 
