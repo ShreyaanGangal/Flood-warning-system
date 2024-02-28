@@ -142,9 +142,8 @@ def fetch_measure_levels(measure_id, dt):
             levels.append(measure['value'])
         except KeyError:
             continue
-
         # Append data
         dates.append(d)
-        levels.append(measure['value'])
+
 
     return dates, levels

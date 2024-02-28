@@ -15,11 +15,12 @@ def run():
 
     for station in wanted_stations:
         stat = station[0]
-        dt = 10
+        dt = 2
         dates, levels = fetch_measure_levels(
             stat.measure_id, dt=datetime.timedelta(days=dt))
         p = 4
         plot_water_level_with_fit(stat, dates, levels,p)
 
 if __name__ == '__main__':
-    run()
+    run()   
+
