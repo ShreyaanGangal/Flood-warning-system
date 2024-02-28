@@ -138,6 +138,10 @@ def fetch_measure_levels(measure_id, dt):
     for measure in data['items']:
         # Convert date-time string to a datetime object
         d = dateutil.parser.parse(measure['dateTime'])
+        try:
+            levels.append(measure['value'])
+        except KeyError:
+            continue
 
         # Append data
         dates.append(d)

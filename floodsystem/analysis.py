@@ -7,6 +7,20 @@ import matplotlib.dates
 
 def polyfit(dates, levels, p):
     b = matplotlib.dates.date2num(dates)
+    if not (len(b) and len(levels)):
+        return 0, 0
+
+    if not all(isinstance(n, (datetime.datetime)) for n in dates):
+        return 0, 0
+    
+    if not all(isinstance(n, (int, float)) for n in b):
+        return 0, 0
+    
+    if not all(isinstance(n, (int, float)) for n in levels):
+        return 0, 0
+
+    if len(b) != len(levels):
+        return 0, 0
     p_coeff = np.polyfit(b - b[0], levels, p)
     poly = np.poly1d(p_coeff)
     return (poly, b[0])
