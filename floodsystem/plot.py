@@ -13,7 +13,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     typical_high_levels = station.typical_range[1]
     plt.plot(dates, [typical_low_levels]*len(dates), label = "Typical Low Level", ls = 'dotted')
     plt.plot(dates, [typical_high_levels]*len(dates), label = "Typical High Level", ls = 'dashed')
-    plt.plot(dates, levels, label = "Water levels of " + station.name)
+    plt.plot(dates, levels, label = station.name)
 
     plt.xlabel("Dates")
     plt.ylabel("Water Level (m)")
