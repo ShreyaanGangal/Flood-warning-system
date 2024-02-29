@@ -19,7 +19,11 @@ def run():
         dates, levels = fetch_measure_levels(
             stat.measure_id, dt=datetime.timedelta(days=dt))
         p = 4
-        plot_water_level_with_fit(stat, dates, levels,p)
+        if dates and levels:
+            plot_water_level_with_fit(stat, dates, levels, p)
+        else:
+            print("No date for" + ' ' + stat.name)
+     #   plot_water_level_with_fit(stat, dates, levels,p)
 
 if __name__ == '__main__':
     run()   

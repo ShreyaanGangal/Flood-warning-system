@@ -20,7 +20,7 @@ def run():
         dt = 1
         dates, levels = fetch_measure_levels(
                 stat.measure_id, dt=datetime.timedelta(days=dt))
-        p = 4
+        p = 12
         poly, d0 = polyfit(dates, levels, p)
         #print(poly)
         if not poly:
