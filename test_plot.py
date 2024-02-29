@@ -18,13 +18,3 @@ def test_plot_water_levels():
     assert len(plt.gca().lines) == 3
     assert plt.gca().get_xlabel() == 'Dates'
     assert plt.gca().get_ylabel() == 'Water Level (m)'
-
-#def test_plot_water_level_with_fit():
- #   p=4
-  #  plt.switch_backend('agg')
-   # plot_water_level_with_fit(station, dates, levels, p)
-    #axes = plt.gca()
-
-    #assert len(axes.lines) == 5
-    #assert axes.get_xlabel() == 'Dates'
-    #assert axes.get_ylabel() == 'Water Level (m)'
