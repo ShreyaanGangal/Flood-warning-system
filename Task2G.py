@@ -24,13 +24,13 @@ def run():
             poly, d0 = polyfit(dates, levels, p)
             #print(poly)
             if not poly:
-                print(station[0].name)
+                #print(station[0].name)
                 continue
             derivative = poly.deriv()
             #print(derivative)
             a = matplotlib.dates.date2num(dates)
-            print(stat.relative_water_level())
-            print(derivative(a[-1]- d0))
+            #print(stat.relative_water_level())
+            #print(derivative(a[-1]- d0))
             if stat.town in dict_town_and_scaled_risk:
                 dict_town_and_scaled_risk[stat.town] += ((stat.relative_water_level())+(stat.relative_water_level())*derivative(a[-1]-d0))
             else:
@@ -38,7 +38,15 @@ def run():
     
     print(dict_town_and_scaled_risk)
     sorted_dict_town_and_scaled_risk = sorted(dict_town_and_scaled_risk.items(), key=lambda x: x[1], reverse = True)
-    
+    print(sorted_dict_town_and_scaled_risk)
+    #resultList = list(sorted_dict_town_and_scaled_risk.items())
+ #   empty_dictionary = {}
+  #  for n in sorted_dict_town_and_scaled_risk:
+         
+         
+
+
+
 
 
 if __name__ == "__main__":
