@@ -53,14 +53,14 @@ def run():
     if station_name in town_names:
         index = town_names.index(station_name)
         if sorted_dict_town_and_scaled_risk[index][1] > high_level:
-            print(station_name + '' + 'has a high risk of flooding')
+            print(station_name + ' ' + 'has a high risk of flooding')
         elif sorted_dict_town_and_scaled_risk[index][1] > medium_level:
-            print(station_name + '' + 'has a medium risk of flooding')
+            print(station_name + ' ' + 'has a medium risk of flooding')
         elif sorted_dict_town_and_scaled_risk[index][1] > low_level:
-            print(station_name + '' + 'has a low risk of flooding')
+            print(station_name + ' ' + 'has a low risk of flooding')
 
     else:
-        print (station_name + '' + 'is not a valid station name')
+        print (station_name + ' ' + 'is not a valid station name')
 
 
     #resultList = list(sorted_dict_town_and_scaled_risk.items())
